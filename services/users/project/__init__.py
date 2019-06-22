@@ -1,21 +1,22 @@
 import os
-from flask import Flask, jsonify
-from flask_restplus import Resource, Api
+from flask import Flask
 
 
-# instantiate the app
-app = Flask(__name__)
+def create_app(script_info=None):
 
-api = Api(app)
+    app = Flask(__name__)
 
-# set config
-app_settings = os.getenv("APP_SETTINGS")
-app.config.from_object(app_settings)
+    app_settings = os.getenv("APP_SETTINGS")
+    app.config.from_object(app_settings)
 
+    # register blueprints
+    from project.api.users import users_blueprint
 
-class UsersPing(Resource):
-    def get(self):
-        return {"status": "success", "message": "pong!"}
+    app.register_blueprint(users_blueprint)
 
+    # shell context for flask cli
+    @app.shell_context_processor
+    def ctx():
+        return {"app": app}
 
-api.add_resource(UsersPing, "/users/ping")
+    return app
