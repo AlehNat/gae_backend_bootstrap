@@ -19,7 +19,12 @@ Local
 activate venv
 python manage.py test
 
-Gotchas
+
+Black:
+
+black . --exclude env/
+
+Gotchas:
 
 1. import file mismatch:
 find . -name "*.pyc" -exec rm -f {} \;
