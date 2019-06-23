@@ -15,7 +15,7 @@ services:
       - APP_SETTINGS=project.config.DevelopmentConfig
 
       #check
-      - DATASTORE_EMULATOR_HOST=datastore:8081
+      - DATASTORE_EMULATOR_HOST=datastore:8001
       - DATASTORE_PROJECT_ID=project-test
     depends_on:
       - datastore
@@ -26,6 +26,6 @@ services:
       dockerfile: Dockerfile
     environment:
       - DATASTORE_PROJECT_ID=project-test
-      - DATASTORE_LISTEN_ADDRESS=0.0.0.0:8081
+      - DATASTORE_LISTEN_ADDRESS=0.0.0.0:8001
     ports:
-      - "8081:8081"
+      - "8001:8001"

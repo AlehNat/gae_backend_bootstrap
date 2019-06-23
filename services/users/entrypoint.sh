@@ -2,7 +2,7 @@
 
 echo "Waiting for datastore emulator..."
 
-while ! nc -z datastore 8081; do
+while ! nc -z datastore 8001; do
   sleep 0.1
 done
 

@@ -1,5 +1,8 @@
 # base image
-FROM python:3.7.2-alpine
+#FROM python:3.7.2-alpine
+FROM python:3.7.2-stretch
+
+RUN apt-get update && apt-get install netcat-openbsd
 
 # set working directory
 WORKDIR /usr/src/app
