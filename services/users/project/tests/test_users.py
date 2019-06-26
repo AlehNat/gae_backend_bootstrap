@@ -1,28 +1,6 @@
 import json
 
-import pytest
 from google.cloud import datastore
-
-from project import create_app
-
-app = create_app()
-
-
-@pytest.fixture
-def client():
-    app.config.from_object("project.config.TestingConfig")
-    cl = app.test_client()
-    yield cl
-
-@pytest.fixture
-def datastore_client():
-
-    import mock
-    import google.auth.credentials
-
-    credentials = mock.Mock(spec=google.auth.credentials.Credentials)
-    ds_client = datastore.Client(project="project-test", credentials=credentials)
-    yield ds_client
 
 
 def test_users(client):
@@ -50,15 +28,14 @@ def test_add_user(client):
 def test_single_user(datastore_client):
     """Ensure get single user behaves correctly."""
 
-    key = datastore_client.key("Task")
-    item = datastore.Entity(key)
-    item.update(
-        {
-            "category": "Personal",
-            "done": False,
-            "priority": 4,
-            "description": "Learn Cloud Datastore",
-        }
+    user_key = datastore_client.key("User")
+    user_entity = datastore.Entity(user_key)
+    user_entity.update(
+        {"first_name": "John", "last_name": "Doe", "description": "Test user"}
     )
-    datastore_client.put(item)
-    assert item.id
+    datastore_client.put(user_entity)
+
+    user = datastore_client.get(user_entity.key)
+    assert user["first_name"] == "John"
+    assert user["last_name"] == "Doe"
+    assert user["description"] == "Test user"

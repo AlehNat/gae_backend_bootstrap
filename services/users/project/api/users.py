@@ -18,10 +18,13 @@ class UsersList(Resource):
         username = post_data.get("username")
         email = post_data.get("email")
 
-        #TODO update
+        # TODO update
         # db.session.add(User(username=username, email=email))
         # db.session.commit()
-        response_object = {"status": "success", "message": f"{email} was added!"}
+        response_object = {
+            "status": "success",
+            "message": "{} was added!".format(email),
+        }
         return response_object, 201
 
 

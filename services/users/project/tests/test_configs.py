@@ -21,4 +21,4 @@ def test_testing_config():
 def test_prod_config():
     app.config.from_object("project.config.ProductionConfig")
     assert app.config["SECRET_KEY"] == "my_precious"
-    assert app.config["TESTING"] == False
+    assert app.config["TESTING"] is False
