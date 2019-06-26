@@ -4,4 +4,3 @@ Dockerfile
 Dockerfile-prod
 .pytest_cache
 .cache
-/.pytest_cache/
