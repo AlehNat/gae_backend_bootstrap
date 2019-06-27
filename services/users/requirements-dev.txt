@@ -1,0 +1,5 @@
+google-cloud-datastore==1.7.0
+pytest==4.6.3
+black==19.3b0
+mock==3.0.5
+flake8==3.7.7
