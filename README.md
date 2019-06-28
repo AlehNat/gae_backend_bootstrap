@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/olegnatsevsky/testdriven-app.svg?branch=master)](https://travis-ci.org/olegnatsevsky/testdriven-app)
+[![Build Status](https://travis-ci.org/olegnatsevsky/gae_backend_bootstrap.svg?branch=master)](https://travis-ci.org/olegnatsevsky/gae_backend_bootstrap)
 
 # gae_bakend_bootstrap
 
