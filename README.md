@@ -1,5 +1,6 @@
-# gae_bakend_bootstrap
+[![Build Status](https://travis-ci.org/olegnatsevsky/testdriven-app.svg?branch=master)](https://travis-ci.org/olegnatsevsky/testdriven-app)
 
+# gae_bakend_bootstrap
 
 Run containers
 
