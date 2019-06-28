@@ -15,7 +15,7 @@ class UsersPing(Resource):
 class UsersList(Resource):
     def post(self):
         post_data = request.get_json()
-        username = post_data.get("username")
+        # username = post_data.get("username")
         email = post_data.get("email")
 
         # TODO update
