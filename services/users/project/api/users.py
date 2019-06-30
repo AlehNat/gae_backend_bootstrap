@@ -14,13 +14,14 @@ class UsersPing(Resource):
 @ns_user.route("/")
 class UsersList(Resource):
     def post(self):
+        from project.api.service.storage.users import store_user
+
         post_data = request.get_json()
-        # username = post_data.get("username")
+        username = post_data.get("username")
         email = post_data.get("email")
 
-        # TODO update
-        # db.session.add(User(username=username, email=email))
-        # db.session.commit()
+        store_user(username, email)
+
         response_object = {
             "status": "success",
             "message": "{} was added!".format(email),

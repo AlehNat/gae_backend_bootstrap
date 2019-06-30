@@ -1,26 +1,13 @@
-import mock
 import pytest
-import google.auth.credentials
-from google.cloud import datastore
 from project import create_app
+from project.api.service.storage import create_datastore_client
 
 app = create_app()
 
 
-class MemorizingClient(datastore.Client):
-    """Datastore client. Stores all stored keys in self.stored_object_keys"""
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.stored_object_keys = set()
-
-    def put(self, entity):
-        super().put(entity)
-        self.stored_object_keys.add(entity.key)
-
-
 @pytest.fixture
 def client():
+    """Standard flask testing client"""
     app.config.from_object("project.config.TestingConfig")
     cl = app.test_client()
     yield cl
@@ -29,9 +16,12 @@ def client():
 @pytest.fixture
 def datastore_client():
     """Datastore client that clean up all created entities"""
+    return create_datastore_client()
 
-    credentials = mock.Mock(spec=google.auth.credentials.Credentials)
-    ds_client = MemorizingClient(project="project-test", credentials=credentials)
-    yield ds_client
-    if ds_client.stored_object_keys:
-        ds_client.delete_multi(ds_client.stored_object_keys)
+
+def clean_test_data():
+    """Searches all data in the datastore and delete"""
+    ds_client = create_datastore_client()
+    query = ds_client.query()
+    keys = [entity.key for entity in query.fetch()]
+    ds_client.delete_multi(keys)
