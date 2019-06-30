@@ -5,7 +5,7 @@ from google.cloud import datastore
 
 def test_users(client):
     """Ensure the /ping route behaves correctly."""
-    resp = client.get("/users/ping")
+    resp = client.get("/api/1/users/ping")
     assert 200 == resp.status_code
     assert "pong!" == resp.json["message"]
     assert "success" == resp.json["status"]
@@ -15,7 +15,7 @@ def test_add_user(client):
     """Ensure a new user can be added to the database."""
 
     resp = client.post(
-        "/users",
+        "/api/1/users/",
         data=json.dumps({"username": "michael", "email": "michael@mherman.org"}),
         content_type="application/json",
     )

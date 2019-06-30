@@ -1,17 +1,17 @@
-from flask import Blueprint
 from flask import request
-from flask_restplus import Resource, Api
+from flask_restplus import Resource, Namespace
 
 
-users_blueprint = Blueprint("users", __name__)
-api = Api(users_blueprint)
+ns_user = Namespace("users", description="Users related operations")
 
 
+@ns_user.route("/ping")
 class UsersPing(Resource):
     def get(self):
         return {"status": "success", "message": "pong!"}
 
 
+@ns_user.route("/")
 class UsersList(Resource):
     def post(self):
         post_data = request.get_json()
@@ -26,7 +26,3 @@ class UsersList(Resource):
             "message": "{} was added!".format(email),
         }
         return response_object, 201
-
-
-api.add_resource(UsersPing, "/users/ping")
-api.add_resource(UsersList, "/users")

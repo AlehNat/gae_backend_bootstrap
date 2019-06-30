@@ -10,9 +10,9 @@ def create_app(script_info=None):
     app.config.from_object(app_settings)
 
     # register blueprints
-    from project.api.users import users_blueprint
+    from project.api import api_blueprint
 
-    app.register_blueprint(users_blueprint)
+    app.register_blueprint(api_blueprint, url_prefix="/api/1")
 
     # shell context for flask cli
     @app.shell_context_processor
