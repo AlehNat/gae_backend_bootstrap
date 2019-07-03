@@ -6,6 +6,9 @@ services:
 env:
   DOCKER_COMPOSE_VERSION: 1.23.2
 
+install:
+  - pip install --user codecov
+
 before_install:
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
@@ -19,6 +22,7 @@ script:
   - docker-compose exec users python manage.py test-cov
   - docker-compose exec users flake8 project
   - docker-compose exec users black . --check --diff  --exclude env/
+  - mv services/users/coverage.xml .
 
 after_success:
   - codecov
