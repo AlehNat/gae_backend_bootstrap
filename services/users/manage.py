@@ -9,12 +9,7 @@ app = create_app()
 cli = FlaskGroup(create_app=create_app)
 
 COV = coverage.coverage(
-    branch=True,
-    include='project/*',
-    omit=[
-        'project/tests/*',
-        'project/config.py',
-    ]
+    branch=True, include="project/*", omit=["project/tests/*", "project/config.py"]
 )
 COV.start()
 
@@ -24,6 +19,7 @@ def test():
     """Runs the tests without code coverage"""
     pytest.main(["project"])
 
+
 @cli.command()
 def test_cov():
     """Runs the tests with code coverage"""
@@ -31,7 +27,7 @@ def test_cov():
     if res == 0:
         COV.stop()
         COV.save()
-        print('Coverage Summary:')
+        print("Coverage Summary:")
         COV.report()
         return 0
     sys.exit(res)
