@@ -29,6 +29,8 @@ def test_cov():
         COV.save()
         print("Coverage Summary:")
         COV.report()
+        COV.xml_report()
+        COV.erase()
         return 0
     sys.exit(res)
 
