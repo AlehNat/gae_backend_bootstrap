@@ -3,20 +3,21 @@ import pytest
 import sys
 from flask.cli import FlaskGroup
 
-from project import create_app
-
-app = create_app()
-cli = FlaskGroup(create_app=create_app)
-
 COV = coverage.coverage(
     branch=True, include="project/*", omit=["project/tests/*", "project/config.py"]
 )
 COV.start()
 
+from project import create_app
+
+app = create_app()
+cli = FlaskGroup(create_app=create_app)
+
 
 @cli.command()
 def test():
     """Runs the tests without code coverage"""
+    COV.stop()
     pytest.main(["project"])
 
 
