@@ -29,3 +29,23 @@ The application can be run locally or inside a Docker container.
   http://localhost:5001/api/1/docs
 
    
+# Testing, code style
+
+1. To run integration tests
+  ```
+  $ docker-compose exec users python manage.py test
+  ```
+2. To run tests with coverage
+  ```
+  $ docker-compose exec users python manage.py test-cov
+  ```
+3. To check code style with flake8
+  ```
+  $ docker-compose exec users flake8 project
+  ```
+4. To check code style with Black
+  ```
+  $ docker-compose exec users black . --check --diff  --exclude env/
+  ```
+
+  
