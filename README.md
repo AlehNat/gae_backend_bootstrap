@@ -55,9 +55,9 @@ The application can be run locally or inside a Docker container.
 (TBD)
 
 ## Inspired by
-This project is based on:
+This project is based on
 [Microservices with Docker, Flask, and React](https://testdriven.io/courses/microservices-with-docker-flask-and-react/)
-I highly recommend this course, is full of best practices, explanations and many more.
+I highly recommend this course it full of details, best practices and many more.
 
 ## Author
 
