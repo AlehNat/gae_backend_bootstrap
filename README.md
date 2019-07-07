@@ -2,7 +2,7 @@
 [![codecov](https://codecov.io/gh/olegnatsevsky/gae_backend_bootstrap/branch/master/graph/badge.svg)](https://codecov.io/gh/olegnatsevsky/gae_backend_bootstrap)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 
-# Welcome
+## Welcome
 
 This template developed to speed up the process of development REST API with GAE and Cloud Datastore. It built on top of Flask, Flask-RESTPlus.
 
@@ -11,7 +11,7 @@ We have configured CI pipeline using [Travis-CI](https://travis-ci.org) with int
 The application can be run locally or inside a Docker container.
 
 
-# Quick Strat
+## Quick Strat
 
 1. Clone the repo
   ```
@@ -29,7 +29,7 @@ The application can be run locally or inside a Docker container.
   http://localhost:5001/api/1/docs
 
    
-# Testing, code style
+## Testing, code style
 
 1. To run integration tests
   ```
@@ -47,5 +47,12 @@ The application can be run locally or inside a Docker container.
   ```
   $ docker-compose exec users black . --check --diff  --exclude env/
   ```
+
+## Deployment to Google App Engine
+(TBD)
+
+## Author
+
+- <a href="https://www.linkedin.com/in/onats/">Aleh Natseuski</a> (@<a href="https://twitter.com/natsevsky_oleg">natsevsky_oleg</a> on Twitter)
 
   
