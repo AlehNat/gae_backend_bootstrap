@@ -51,6 +51,14 @@ The application can be run locally or inside a Docker container.
 ## Deployment to Google App Engine
 (TBD)
 
+## Learn More
+
+## Inspired by
+This project is based on:
+[Microservices with Docker, Flask, and React](https://testdriven.io/courses/microservices-with-docker-flask-and-react/)
+
+I highly recomend this cource, it full of best practices, explanations and many more.
+
 ## Author
 
 - <a href="https://www.linkedin.com/in/onats/">Aleh Natseuski</a> (@<a href="https://twitter.com/natsevsky_oleg">natsevsky_oleg</a> on Twitter)
