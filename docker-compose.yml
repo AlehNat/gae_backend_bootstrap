@@ -14,7 +14,6 @@ services:
       - FLASK_ENV=development
       - APP_SETTINGS=project.config.TestingConfig
 
-      #check
       - DATASTORE_EMULATOR_HOST=datastore:8001
       - DATASTORE_PROJECT_ID=project-test
     depends_on:

@@ -1,0 +1,8 @@
+steps:
+- name: 'docker/compose:1.24.0'
+  args: ['up', '-d', '--build']
+- name: 'docker/compose:1.24.0'
+  args: ['exec', '-T', 'users', 'flake8', 'project']
+
+- name: 'docker/compose:1.24.0'
+  args: ['exec', '-T', 'users', 'python', 'manage.py', 'test-cov']
